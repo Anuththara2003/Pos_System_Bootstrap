@@ -1,0 +1,149 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2c3e50, #4ca1af) !important;
+}
+
+/*.Container-Filed {*/
+/*    width: 100%;*/
+/*    max-width: 1200px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/* Navigation bar styling - made full width */
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #2c3e50, #4ca1af) !important;
+    padding: 10px 0;
+    border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+;
+
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left:40px;
+}
+
+/* Right-aligned navigation links */
+.navbar-nav {
+    display: flex;
+    margin-left: 60%; /* This pushes the nav items to the right */
+    margin-right: 15px;
+    gap: 50px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important;
+    transform: scale(1.05);
+}
+
+/* Image section */
+.image {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.image img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Main section with management options */
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px 0;
+    /*background: linear-gradient(to right, #2c3e50, #4ca1af) !important;*/
+
+}
+
+.main div {
+    text-align: center;
+    width: 30%;
+    min-width: 200px;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.main div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.main img {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    align-items: center;
+}
+
+.main a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main a:hover {
+    color: #4ca1af;
+}
+
+
+/* Fix for the layout shown in the image */
+.main {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 60%;
+}
+
+.management-option {
+    text-align: center;
+    background: linear-gradient(to right, #2c3e50, #4ca1af) !important;
+    padding: 30px 20px;
+    border-radius: 8px;
+    border: 1px solid #4ca1af;
+    width: 30%;
+    margin: 0 10px;
+}
+
+.management-option img {
+    align-items: center;
+    display: block;
+    margin: 0 auto 15px;
+   background: chocolate;
+}
+
+.management-option a {
+    color: #2c3e50;
+    font-weight: bold;
+    text-decoration: none;
+}

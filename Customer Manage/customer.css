@@ -1,0 +1,216 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2c3e50, #4ca1af) !important;
+}
+
+/*.Container-Filed {*/
+/*    width: 100%;*/
+/*    max-width: 1200px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/* Navigation bar styling - made full width */
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #2c3e50, #4ca1af) !important;
+    padding: 10px 0;
+    border-bottom: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+;
+
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left:40px;
+}
+
+/* Right-aligned navigation links */
+.navbar-nav {
+    display: flex;
+    margin-left: 60%; /* This pushes the nav items to the right */
+    margin-right: 15px;
+    gap: 50px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important;
+    transform: scale(1.05);
+}
+
+#customer {
+    /*background-color: rgba(255, 255, 255, 0.15);*/
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: white;
+}
+
+.header {
+    text-align: right;
+    width: 100%;
+    bottom: 0;
+    color: cornsilk;
+    right: 50px;
+
+}
+
+#customer .container .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+}
+
+#customer .container .row .col:first-child {
+    display: flex;
+    justify-content: center;
+}
+
+/* Order container styling */
+.order_container {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: white;
+}
+
+/* Form styling */
+form .form-label {
+    color: white;
+    font-weight: 500;
+}
+
+form .form-control {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+}
+
+form textarea.form-control {
+    resize: none;
+}
+
+/* Button styling */
+#customer_btn {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+}
+
+/* Search section styling */
+#customer_search {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#customer_search input {
+    border-radius: 25px;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+#customer_search .form-select {
+    width: auto;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #5bc0de !important;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: 500;
+    border: none;
+}
+
+.table tbody th,
+.table tbody td {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #customer_btn {
+        flex-wrap: wrap;
+    }
+
+    #customer_btn button {
+        margin-bottom: 10px;
+    }
+
+    #customer_search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #customer_search input,
+    #customer_search .form-select {
+        margin: 5px 0;
+    }
+}
+
+/* Add icon styling */
+.fa-solid.fa-magnifying-glass {
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+}

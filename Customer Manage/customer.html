@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Gym Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="customer.css">
+</head>
+<body>
+<div class="Container-Filed">
+    <!-- Navigation bar -->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="../Images/fitness.jpg" width="60" height="60"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SignUp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- customer section -->
+    <section id="customer">
+        <div class="container">
+            <div class="row mb-3">
+                <div  class="col">
+                    <h3 class="header">Manage Customer</h3>
+                </div>
+                <div class="col">
+                    <img src="../Images/usericon.jpg" alt="Bootstrap" width="50" height="50">
+                </div>
+            </div>
+
+</div>
+
+
+        <div class="order_container">
+            <div class="row">
+                <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                    <form>
+                        <div class="mb-3">
+                            <label for="customerId" class="form-label">Customer Id</label>
+                            <input type="text" class="form-control" id="customerId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Customer Full Name</label>
+                            <input type="text" class="form-control" id="fullname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Customer Address</label>
+                            <textarea class="form-control" id="address" style="height: 65px"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact" class="form-label">Customer Contact No</label>
+                            <input type="text" class="form-control" id="contact">
+                        </div>
+                        <div id="customer_btn" class="mt-5">
+                            <button type="button" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="reset" class="btn btn-warning">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div id="customer_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" class="form-control" placeholder="Search">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>customer_id</option>
+                            <option>name</option>
+                            <option>address</option>
+                            <option>salary</option>
+                        </select>
+                    </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="table-info">
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Contact</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Anton</td>
+                            <td>3A/1,Bandaragama</td>
+                            <td>0774151257</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>John</td>
+                            <td>45,Flower Road</td>
+                            <td> 0715263214</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td> Mark</td>
+                            <td>35/B,kaluthara</td>
+                            <td>0789563214</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Paul</td>
+                            <td>45,Hoana Road</td>
+                            <td> 0763715892</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Marline</td>
+                            <td>35/B,Pokunuwita</td>
+                            <td>0745698523</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
