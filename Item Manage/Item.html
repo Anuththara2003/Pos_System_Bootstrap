@@ -52,7 +52,101 @@
         <h2>Item Manage</h2>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <div class="order_container">
+        <div class="row">
+            <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                <form>
+                    <div class="mb-3">
+                        <label for="customerId" class="form-label">Item Id</label>
+                        <input type="text" class="form-control" id="customerId">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="fullname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label"> Item Price</label>
+                        <textarea class="form-control" id="address" style="height: 65px"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="contact">
+                    </div>
+
+                    <div id="item_btn" class="mt-5">
+                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="reset" class="btn btn-warning">Clear</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                <div id="item_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" class="form-control" placeholder="Search">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Item_Id</option>
+                        <option>Duration</option>
+                        <option>Price</option>
+                        <option>Quantity</option>
+                    </select>
+                </div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="table-info">
+                        <th scope="col">Id</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>One Hour</td>
+                        <td>1000.00</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>One Hour & 30 Minutes</td>
+                        <td>1500.00</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>30 Minutes</td>
+                        <td>500.00</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Two Hour</td>
+                        <td>2500.00</td>
+                        <td>10</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Three Hour</td>
+                        <td>4000.00</td>
+                        <td>05</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </section>
 </body>
 </html>
