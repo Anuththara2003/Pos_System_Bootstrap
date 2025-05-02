@@ -67,6 +67,373 @@
     </div>
 </div>
 
+
+
+<!-- customer section -->
+<section id="customer">
+    <div class="container">
+        <div class="row mb-3">
+            <div  class="col">
+                <h3 class="header">Manage Customer</h3>
+            </div>
+            <div class="col">
+                <img src="../Images/usericon.jpg" alt="Bootstrap" width="50" height="50">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="order_container">
+        <div class="row">
+            <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                <form>
+                    <div class="mb-3">
+                        <label for="customerId" class="form-label">Customer Id</label>
+                        <input type="text" class="form-control" id="id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Customer Full Name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Customer Address</label>
+                        <textarea class="form-control" id="addres" style="height: 65px"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Customer Contact No</label>
+                        <input type="text" class="form-control" id="contct">
+                    </div>
+                    <div id="customer_btn" class="mt-5">
+                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="reset" class="btn btn-warning">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                <div id="customer_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" class="form-control" placeholder="Search">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>customer_id</option>
+                        <option>name</option>
+                        <option>address</option>
+                        <option>salary</option>
+                    </select>
+                </div>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="table-info">
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Anton</td>
+                        <td>3A/1,Bandaragama</td>
+                        <td>0774151257</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>John</td>
+                        <td>45,Flower Road</td>
+                        <td> 0715263214</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td> Mark</td>
+                        <td>35/B,kaluthara</td>
+                        <td>0789563214</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Paul</td>
+                        <td>45,Hoana Road</td>
+                        <td> 0763715892</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Marline</td>
+                        <td>35/B,Pokunuwita</td>
+                        <td>0745698523</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="container">
+        <div id="formIno">
+            <img src="../Images/file%20icon.jpg" id= "itemicon" alt="Bootstrap" width="50" height="50">
+            <h2>Item Manage</h2>
+        </div>
+
+
+
+        <div class="order_container">
+            <div class="row">
+                <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                    <form>
+                        <div class="mb-3">
+                            <label for="customerId" class="form-label">Item Id</label>
+                            <input type="text" class="form-control" id="customersId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="fullname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label"> Item Price</label>
+                            <textarea class="form-control" id="addresss" style="height: 65px"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact" class="form-label">Quantity</label>
+                            <input type="text" class="form-control" id="contact">
+                        </div>
+
+                        <div id="item_btn" class="mt-5">
+                            <button type="button" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="reset" class="btn btn-warning">Clear</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div id="item_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" class="form-control" placeholder="Search">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Item_Id</option>
+                            <option>Duration</option>
+                            <option>Price</option>
+                            <option>Quantity</option>
+                        </select>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="table-info">
+                            <th scope="col">Id</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>One Hour</td>
+                            <td>1000.00</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>One Hour & 30 Minutes</td>
+                            <td>1500.00</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>30 Minutes</td>
+                            <td>500.00</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Two Hour</td>
+                            <td>2500.00</td>
+                            <td>10</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Three Hour</td>
+                            <td>4000.00</td>
+                            <td>05</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Title -->
+        <section class="container">
+            <div id="formInfo">
+                <img src="../Images/list%20icon.jpg" id= "itemManageIcon" alt="Bootstrap" width="50" height="50">
+                <h2>Place Order</h2>
+            </div>
+
+            <!--  Card One-->
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="grid-container">
+                        <!-- Invoice Details div-->
+                        <div class="card searchCustomerCard">
+                            <div class="card-header" id="searchInvoiceDetailsTitle">
+                                Invoice Details
+                            </div>
+
+
+                            <div class="card-body invoiceDetailsInputs">
+                                <div class="mb-3">
+                                    <label for="orderID" class="form-label">Order ID</label>
+                                    <input type="text" class="form-control" id="orderID" placeholder="Order ID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="date" placeholder="Date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customerIdSelect" class="form-label">Customer ID</label>
+                                    <input type="text" class="form-control" id="customerIdSelect" placeholder="Customer ID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customerId" class="form-label">Customer salary</label>
+                                    <input type="text" class="form-control" id="customerId" placeholder="Customer Salary">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="nname" placeholder="Customer Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Customer Address">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Item Details div-->
+                        <div class="card searchCustomerCard">
+                            <div class="card-header" id="searchCustomerCardTitle">
+                                Item Select
+                            </div>
+                            <div class="card-body itemDetailsInputs">
+                                <div id="searchItemId">
+                                    <label for="itemID" class="form-label">Item Code</label>
+                                    <select class="form-select form-select-sm" id="itemID" aria-label="Small select example">
+                                        <option selected>Item IDs</option>
+                                        <option value="1">I001</option>
+                                        <option value="2">I002</option>
+                                        <option value="3">I003</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="itemCode" class="form-label">Item Code</label>
+                                    <input type="text" class="form-control" id="itemCode" placeholder="Item Code">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="itemName" class="form-label">Item Name</label>
+                                    <input type="text" class="form-control" id="itemName" placeholder="Item Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="itemPrice" class="form-label">Price</label>
+                                    <input type="text" class="form-control" id="itemPrice" placeholder="Item Unit Price">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="itemQty" class="form-label">Qty</label>
+                                    <input type="text" class="form-control" id="itemQty" placeholder="Item Qty On Hand">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="orderQty" class="form-label">Order Quantity</label>
+                                    <input type="text" class="form-control" id="orderQty" placeholder="Order Quantity">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#add-item-modal">ADD Item</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card searchCustomerCard">
+                            <div class="card-header" id="OrderPriceCardTitle">
+                                Total Price
+                            </div>
+                            <div class="card-body">
+                                <div id="totalPriceDiv">
+                                    <h2>Total : </h2>
+                                    <h2></h2>
+                                </div>
+                                <div id="subTotalPriceDiv">
+                                    <h2>Sub Total : </h2>
+                                    <h2></h2>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cash" class="form-label">Cash</label>
+                                    <input type="text" class="form-control" id="cash" placeholder="Cash Amount">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="discount" class="form-label">Discount %</label>
+                                    <input type="number" class="form-control" id="discount" placeholder="Discount Amount">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="balance" class="form-label">Balance</label>
+                                    <input type="text" class="form-control" id="balance" placeholder="Balance">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#place-order-modal">Place Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="table-info">
+                            <th scope="col">Item Id</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+
+    </section>
+    </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
