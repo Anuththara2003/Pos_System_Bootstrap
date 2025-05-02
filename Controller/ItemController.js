@@ -87,6 +87,51 @@ $('#save_item').on("click", function () {
 });
 
 
+$("#item_delete_button").on("click", function () {
+    let id = $("#item_id").val().trim();
+
+    const item = item_db.find((item) => item.id === id);
+
+    if (item === -1) {
+        Swal.fire({
+            title: 'Item Not Found',
+            text: 'Item not found in database.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    // Confirmation before deleting
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Remove customer from array
+            item_db.splice(item, 1);
+            loadTable();
+
+            Swal.fire({
+                title: "Deleted!",
+                text: "Item has been deleted.",
+                icon: "success"
+            });
+
+            // Optional: clear fields
+            $("#item_id").val('');
+            $("#names").val('');
+            $("#price").val('');
+            $("#qty").val('');
+        }
+    });
+});
+
 $("#item-tbody").on('click', 'tr', function(){
 
     let idx = $(this).index();

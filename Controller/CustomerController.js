@@ -184,7 +184,50 @@ $('#customer_update_btn').on("click", function () {
     }
 });
 
+$("#customer_delete_btn").on("click", function () {
+    let customer_id = $("#id").val().trim();
 
+    const customerIndex = customer_db.findIndex((item) => item.customer_id === customer_id);
+
+    if (customerIndex === -1) {
+        Swal.fire({
+            title: 'Customer Not Found',
+            text: 'Customer not found in database.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
+    // Confirmation before deleting
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Remove customer from array
+            customer_db.splice(customerIndex, 1);
+            loadTable();
+
+            Swal.fire({
+                title: "Deleted!",
+                text: "Customer has been deleted.",
+                icon: "success"
+            });
+
+            // Optional: clear fields
+            $("#id").val('');
+            $("#name").val('');
+            $("#addres").val('');
+            $("#contct").val('');
+        }
+    });
+});
 
 $("#customer-tbody").on('click', 'tr', function(){
 
