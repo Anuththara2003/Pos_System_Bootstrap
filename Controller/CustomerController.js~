@@ -67,12 +67,7 @@ $('#save-customer').on("click", function () {
     }
 
     // Save data
-    let Customer_data = new CustomerModel(
-        customer_id,
-        name,
-        address,
-        contact
-    );
+    let Customer_data = new CustomerModel(customer_id, name, address, contact);
     customer_db.push(Customer_data);
 
     // Reload table

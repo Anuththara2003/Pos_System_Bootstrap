@@ -2,26 +2,90 @@ import {customer_db, item_db,} from "../DB/Db.js";
 import ItemModel from "../Model/ItemModel.js";
 
 
-$('#save_item').on ("click",function() {
+$('#save_item').on("click", function () {
     let id;
 
+    // Generate new item ID
     if (item_db.length > 0) {
         const lastItem = item_db[item_db.length - 1].id;
-        console.log(lastItem);
         id = parseInt(lastItem.slice(1)) + 1;
         id = "I" + id.toString().padStart(3, '0');
     } else {
         id = "I001";
     }
-    var name = $("#names").val();
-    var price = $("#price").val();
-    var quantity = $("#qty").val();
 
+    // Get input values
+    var name = $("#names").val().trim();
+    var price = $("#price").val().trim();
+    var quantity = $("#qty").val().trim();
+
+    // Validation
+    if (!name) {
+        Swal.fire({
+            title: 'Invalid Name',
+            text: 'Please enter a valid name.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            customClass: {
+                title: 'error-title',
+                content: 'error-content'
+            }
+        });
+        return;
+    }
+
+    if (!price || isNaN(price)) {
+        Swal.fire({
+            title: 'Invalid Price',
+            text: 'Please enter a valid numeric price.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            customClass: {
+                title: 'error-title',
+                content: 'error-content'
+            }
+        });
+        return;
+    }
+
+    if (!quantity || isNaN(quantity)) {
+        Swal.fire({
+            title: 'Invalid Quantity',
+            text: 'Please enter a valid numeric quantity.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            customClass: {
+                title: 'error-title',
+                content: 'error-content'
+            }
+        });
+        return;
+    }
+
+    // Save item
     let itemModel = new ItemModel(id, name, price, quantity);
     item_db.push(itemModel);
+
+    // Reload table
     loadTable();
 
+    // Show success alert
+    Swal.fire({
+        title: 'Success!',
+        text: 'Item added successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+
+    // Optional: Clear fields after saving
+    $("#names").val('');
+    $("#price").val('');
+    $("#qty").val('');
 });
+
 
 $("#item-tbody").on('click', 'tr', function(){
 
