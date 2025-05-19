@@ -1,19 +1,58 @@
 import {customer_db, item_db,} from "../DB/Db.js";
 import CustomerModel from "../Model/CustomerModel.js";
-// import { setCustomerIds } from '../Controller/OrderController';
+import { setCustomerIds } from './OrderController.js';
+
+if (localStorage.getItem("customer_data")) {
+    let raw = JSON.parse(localStorage.getItem("customer_data"));
+
+    let loaded = raw.map(c => new CustomerModel(c.customer_id, c.name, c.address, c.contact));
+    customer_db.length = 0;
+    customer_db.push(...loaded);
+}
+
+$(document).ready(function() {
+    $("#id").val(nextId());
+    loadTable();
+});
 
 
-$('#save-customer').on("click", function () {
+function nextId(){
     let customer_id;
 
-    // Generate new customer ID
     if (customer_db.length > 0) {
-        const lastCustomer = customer_db[customer_db.length - 1].customer_id;
-        customer_id = parseInt(lastCustomer.slice(1)) + 1;
-        customer_id = "C" + customer_id.toString().padStart(3, '0');
+        const lastId = customer_db[customer_db.length - 1].customer_id;
+        customer_id = parseInt(lastId.slice(1)) + 1;
+        customer_id = 'C' + customer_id.toString().padStart(3, '0');
     } else {
-        customer_id = "C001";
+        customer_id = 'C001';
     }
+
+    return customer_id;
+}
+
+
+
+
+
+
+$('#clear_btn').on("click", function () {
+
+    reset();
+});
+$('#save-customer').on("click", function () {
+
+
+
+    let customer_id = nextId();
+
+    // Generate new customer ID
+    // if (customer_db.length > 0) {
+    //     const lastCustomer = customer_db[customer_db.length - 1].customer_id;
+    //     customer_id = parseInt(lastCustomer.slice(1)) + 1;
+    //     customer_id = "C" + customer_id.toString().padStart(3, '0');
+    // } else {
+    //     customer_id = "C001";
+    // }
 
     // Get input values
     var name = $("#name").val().trim();
@@ -74,9 +113,12 @@ $('#save-customer').on("click", function () {
         contact
     );
     customer_db.push(Customer_data);
+    localStorage.setItem("customer_data", JSON.stringify(customer_db));
 
     // Reload table
     loadTable();
+
+    setCustomerIds(customer_db);
 
     // Show success alert
     Swal.fire({
@@ -87,9 +129,13 @@ $('#save-customer').on("click", function () {
     });
 
     // Optional: clear inputs after saving
+    $("#id").val(nextId());
     $("#name").val('');
     $("#addres").val('');
     $("#contct").val('');
+
+
+
 });
 
 $('#customer_update_btn').on("click", function () {
@@ -162,6 +208,7 @@ $('#customer_update_btn').on("click", function () {
         customer.name = name;
         customer.address = address;
         customer.contact = contact;
+        localStorage.setItem("customer_data", JSON.stringify(customer_db));
         loadTable();
 
         Swal.fire({
@@ -212,6 +259,7 @@ $("#customer_delete_btn").on("click", function () {
         if (result.isConfirmed) {
             // Remove customer from array
             customer_db.splice(customerIndex, 1);
+            localStorage.setItem("customer_data", JSON.stringify(customer_db));
             loadTable();
 
             Swal.fire({
@@ -268,3 +316,40 @@ function  loadTable(){
 
     })
 }
+
+function reset(){
+    $('#id').val(nextId());
+    $('#name').val('');
+    $('#addres').val('');
+    $('#contct').val('');
+    $('#customer-tbody tr').css('background-color', '').removeClass('highlight');
+}
+
+
+$("#customer_search_btn").on("click", function () {
+
+    let customer_id = $("#customer_search_field").val().trim();
+
+    if (customer_id) {
+        let found = false;
+
+        $('#customer-tbody tr').each(function () {
+            let rowId = $(this).find('td:first').text().trim();
+
+            if (rowId === customer_id) {
+                $(this).addClass('highlight');
+
+                $('.customer-table').animate({
+                    scrollTop: $(this).position().top + $('.customer-table').scrollTop()
+                }, 300);
+                found = true;
+            }
+        });
+
+        if (!found) {
+            alert("Customer not found!");
+        }
+    } else {
+        alert("Please enter a customer ID.");
+    }
+});

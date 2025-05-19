@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/fitness.jpg">
     <title>Fitness Gym Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Style.css">
+
 </head>
 <body>
 
+
+         <!-- Navigation bar -->
 <div class="row">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -31,7 +35,7 @@
                         <a id="Order-nav" class="nav-link" href="#">Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SignUp</a>
+                        <a id="orders_history" class="nav-link" href="#">Order History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">LogOut</a>
@@ -42,7 +46,7 @@
     </nav>
 </div>
 <div id="home"  class="Container-Filed">
-    <!-- Navigation bar -->
+
 
 
     <!-- Image Section -->
@@ -72,7 +76,7 @@
 
 
 
-<!-- customer section -->
+        <!-- customer section -->
 <section id="customer">
     <div class="container">
         <div class="row mb-3">
@@ -92,7 +96,7 @@
             <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                 <form>
                     <div class="mb-3">
-                        <label for="customerId" class="form-label">Customer Id</label>
+                        <label  class="form-label">Customer Id</label>
                         <input type="text" class="form-control" id="id">
                     </div>
                     <div class="mb-3">
@@ -100,7 +104,7 @@
                         <input type="text" class="form-control" id="name">
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label">Customer Address</label>
+                        <label  class="form-label">Customer Address</label>
                         <textarea  class="form-control" id="addres" style="height: 65px"></textarea>
                     </div>
                     <div class="mb-3">
@@ -111,24 +115,19 @@
                         <button id="save-customer" type="button" class="btn btn-success">Save</button>
                         <button id="customer_update_btn" type="button" class="btn btn-primary">Update</button>
                         <button id="customer_delete_btn" type="button" class="btn btn-danger">Delete</button>
-                        <button type="reset" class="btn btn-warning">Clear</button>
+                        <button id="clear_btn" type="reset" class="btn btn-warning">Clear</button>
                     </div>
                 </form>
             </div>
 
-            <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="col col-lg-6 col-md-12 col-sm-12 col-12 customer_table">
                 <div id="customer_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" class="form-control" placeholder="Search">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>customer_id</option>
-                        <option>name</option>
-                        <option>address</option>
-                        <option>salary</option>
-                    </select>
-                </div>
+                    <input id="customer_search_field" type="search" class="form-control" placeholder="Search">
 
-                <table class="table table-bordered table-hover">
+                </div>  <button id="customer_search_btn" type="button" class="btn btn-success">Search</button>
+
+                <table  class="table table-bordered table-hover">
                     <thead>
                     <tr class="table-info">
                         <th scope="col">Id</th>
@@ -140,36 +139,7 @@
 
 
                     <tbody id="customer-tbody">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Anton</td>
-                        <td>3A/1,Bandaragama</td>
-                        <td>0774151257</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>John</td>
-                        <td>45,Flower Road</td>
-                        <td> 0715263214</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td> Mark</td>
-                        <td>35/B,kaluthara</td>
-                        <td>0789563214</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Paul</td>
-                        <td>45,Hoana Road</td>
-                        <td> 0763715892</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Marline</td>
-                        <td>35/B,Pokunuwita</td>
-                        <td>0745698523</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -178,8 +148,8 @@
 </section>
 
 
-<!-- Item Section -->
-    <section id="item" class="container">
+        <!-- Item Section -->
+<section id="item" class="container">
         <div id="formIno">
             <img src="../Images/file%20icon.jpg" id= "itemicon" alt="Bootstrap" width="50" height="50">
             <h2>Item Manage</h2>
@@ -192,7 +162,7 @@
                 <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                     <form>
                         <div class="mb-3">
-                            <label for="itemId" class="form-label">Item Id</label>
+                            <label  class="form-label">Item Id</label>
                             <input type="text" class="form-control" id="item_id">
                         </div>
                         <div class="mb-3">
@@ -212,22 +182,17 @@
                             <button id="save_item" type="button" class="btn btn-success">Save</button>
                             <button id="item_update_button" type="button" class="btn btn-primary">Update</button>
                             <button id="item_delete_button" type="button" class="btn btn-danger">Delete</button>
-                            <button type="reset" class="btn btn-warning">Clear</button>
+                            <button id="item_clear" type="reset" class="btn btn-warning">Clear</button>
                         </div>
                     </form>
 
                 </div>
 
-                <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="col col-lg-6 col-md-12 col-sm-12 col-12 item_table">
                     <div id="item_search" class="search mb-4 mt-4 d-flex flex-row align-items-end">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" class="form-control" placeholder="Search">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Item_Id</option>
-                            <option>Duration</option>
-                            <option>Price</option>
-                            <option>Quantity</option>
-                        </select>
+                        <input id="item_search_field" type="search" class="form-control" placeholder="Search">
+                        <button id="item_search_btn" type="button" class="btn btn-success">Search</button>
                     </div>
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -240,37 +205,7 @@
                         </thead>
 
                         <tbody id="item-tbody">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>One Hour</td>
-                            <td>1000.00</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>One Hour & 30 Minutes</td>
-                            <td>1500.00</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>30 Minutes</td>
-                            <td>500.00</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Two Hour</td>
-                            <td>2500.00</td>
-                            <td>10</td>
-                        </tr>
 
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Three Hour</td>
-                            <td>4000.00</td>
-                            <td>05</td>
-                        </tr>
 
                         </tbody>
                     </table>
@@ -281,8 +216,8 @@
 
     </section>
 
-        <!--order section -->
-        <section id="order" class="container">
+    <!--order section -->
+<section id="order" class="container">
             <div id="formInfo">
                 <img src="../Images/list%20icon.jpg" id= "itemManageIcon" alt="Bootstrap" width="50" height="50">
                 <h2>Place Order</h2>
@@ -302,20 +237,22 @@
 
                             <div class="card-body invoiceDetailsInputs">
                                 <div class="mb-3">
-                                    <label for="orderID" class="form-label">Order ID</label>
-                                    <input type="text" class="form-control" id="orderID" placeholder="Order ID">
+                                    <label class="form-label">Order ID</label>
+                                    <input id="OrderId" type="text" class="form-control"  placeholder="Order ID">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="date" class="form-label">Date</label>
-                                    <input type="date" class="form-control" id="date" placeholder="Date">
+                                    <label  class="form-label">Date</label>
+                                    <input id="date" type="date" class="form-control"  placeholder="Date">
                                 </div>
                                 <div class="mb-3">
-                                    <select class="form-select form-select-sm" id="cusID" aria-label="Small select example">
-                                        <option selected>Customer ID</option>
-                                        <option value="1">C001</option>
-                                        <option value="2">C002</option>
-                                        <option value="3">C003</option>
-                                    </select>
+                                    <div class="input-group">
+                                        <input id="inputCustomerId" type="text" class="form-control" aria-label="Text input with dropdown button" PLACEHOLDER="Customer ID">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <ul id="dropdownList" class="dropdown-menu dropdown-menu-end">
+
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="customerId" class="form-label">Customer salary</label>
@@ -323,11 +260,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="nname" placeholder="Customer Name">
+                                    <input id="inputCustomerName" type="text" class="form-control"  placeholder="Customer Name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Customer Address">
+                                    <label  class="form-label">Address</label>
+                                    <input id="inputCustomerAddress" type="text" class="form-control"  placeholder="Customer Address">
                                 </div>
 
                             </div>
@@ -339,36 +276,35 @@
                             </div>
                             <div class="card-body itemDetailsInputs">
                                 <div id="searchItemId">
-                                    <label for="itemID" class="form-label">Item Code</label>
-                                    <select class="form-select form-select-sm" id="itemID" aria-label="Small select example">
-                                        <option selected>Item ID</option>
-                                        <option value="1">001</option>
-                                        <option value="2">I002</option>
-                                        <option value="3">I003</option>
-                                    </select>
+                                    <label  class="form-label">Item Code</label>
+                                    <div class="input-group">
+                                        <input id="inputItemId" type="text" class="form-control" aria-label="Text input with dropdown button" PLACEHOLDER="Item Id">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <ul id="Item_dropdownList" class="dropdown-menu dropdown-menu-end">
+
+                                        </ul>
+                                    </div>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="itemCode" class="form-label">Item Code</label>
-                                    <input type="text" class="form-control" id="itemCode" placeholder="Item Code">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="itemName" class="form-label">Item Name</label>
-                                    <input type="text" class="form-control" id="itemName" placeholder="Item Name">
+                                    <label  class="form-label">Item Name</label>
+                                    <input  id="inputItemName" type="text" class="form-control"  placeholder="Item Name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="itemPrice" class="form-label">Price</label>
-                                    <input type="text" class="form-control" id="itemPrice" placeholder="Item Unit Price">
+                                    <input id="inputItemPrice"type="text" class="form-control" id="itemPrice" placeholder="Item Unit Price">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="itemQty" class="form-label">Qty</label>
-                                    <input type="text" class="form-control" id="itemQty" placeholder="Item Qty On Hand">
+                                    <label class="form-label">Qty</label>
+                                    <input id="inputItemQty" type="text" class="form-control"  placeholder="Item Qty On Hand">
                                 </div>
                                 <div class="mb-3">
                                     <label for="orderQty" class="form-label">Order Quantity</label>
                                     <input type="text" class="form-control" id="orderQty" placeholder="Order Quantity">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#add-item-modal">ADD Item</button>
+                                    <button id="save-Order" class="btn btn-danger" >ADD Item</button>
                                 </div>
                             </div>
                         </div>
@@ -398,14 +334,16 @@
                                     <label for="balance" class="form-label">Balance</label>
                                     <input type="text" class="form-control" id="balance" placeholder="Balance">
                                 </div>
-                                <div class="mb-3">
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#place-order-modal">Place Order</button>
-                                </div>
+                                <button id="place_order"  class="btn btn-success" >
+                                    Place Order
+                                </button>
+
+
                             </div>
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-hover">
+                    <table  class="table table-bordered table-hover">
                         <thead>
                         <tr class="table-info">
                             <th scope="col">Item Id</th>
@@ -415,21 +353,8 @@
                             <th scope="col">Total Price</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <tbody id="Add_Item_T_Body">
+
                         </tbody>
                     </table>
                 </div>
@@ -439,17 +364,63 @@
 
         </section>
 
+<!--Order history-->
+         <section id="Order_History" class="mt-4">
+             <div class="container mb-4">
+                 <div class="row justify-content-start">
+                     <div class="col-md-8">
+                         <label for="orderSearch" class="form-label fw-bold">Search Orders or Items</label>
+                         <div class="search-container">
+                             <input type="text" id="orderSearch" class="form-control" placeholder="">
+                             <button id="searchBtn" class="btn btn-primary">Search</button>
+                             <button id="resetSearchBtn" class="btn btn-primary">Reset</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="container">
+                 <h4>Orders</h4>
+                 <table id="order_details_table1" class="order-table">
+                     <thead>
+                     <tr>
+                         <th>Order Id</th>
+                         <th>Date</th>
+                         <th>Customer Id</th>
+                         <th>Items</th>
+                         <th>Total</th>
 
+                     </tr>
+                     </thead>
+                     <tbody id="order-history-body">
+                     </tbody>
+                 </table>
+             </div>
+             <div class="container mt-4">
+                 <h4>Order Items</h4>
+                 <table id="order_details_table2" class="order-table">
+                     <thead>
+                     <tr>
+                         <th>Item Id</th>
+                         <th>Name</th>
+                         <th>Quantity</th>
+                         <th>Price</th>
+                     </tr>
+                     </thead>
+                     <tbody id="order-item-body">
 
+                     </tbody>
+                 </table>
+             </div>
+         </section>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="lib/jquery-3.7.1.min.js"></script>
 
 <script type="module" src="Controller/CustomerController.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>
-<!--<script type="module" src="Controller/OrderController.js"></script>-->
+<script type="module" src="Controller/OrderController.js"></script>
 
 
 <script>
@@ -459,6 +430,7 @@
     $("#customer").css("display","none");
     $("#item").css("display","none");
     $("#order").css("display","none");
+    $("#Order_History").css("display","none");
 
 
     $("#customer-nav").on("click",function(){
@@ -466,6 +438,7 @@
         $("#home").css("display","none");
         $("#item").css("display","none");
         $("#order").css("display","none");
+        $("#Order_History").css("display","none");
     });
 
 
@@ -474,6 +447,7 @@
         $("#home").css("display","none");
         $("#item").css("display","block");
         $("#order").css("display","none");
+        $("#Order_History").css("display","none");
     });
 
 
@@ -482,6 +456,7 @@
         $("#home").css("display","none");
         $("#item").css("display","none");
         $("#order").css("display","block");
+        $("#Order_History").css("display","none");
     });
 
     $("#home-nav").on("click",function(){
@@ -489,9 +464,16 @@
         $("#home").css("display","block");
         $("#item").css("display","none");
         $("#order").css("display","none");
+        $("#Order_History").css("display","none");
     });
 
-
+    $("#orders_history").on("click",function(){
+        $("#customer").css("display","none");
+        $("#home").css("display","none");
+        $("#item").css("display","none");
+        $("#order").css("display","none");
+        $("#Order_History").css("display","block");
+    });
 
 
 </script>

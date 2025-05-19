@@ -1,18 +1,56 @@
 import {customer_db, item_db,} from "../DB/Db.js";
 import ItemModel from "../Model/ItemModel.js";
+import {setItemIds} from "./OrderController.js";
+
+if (localStorage.getItem("itemModel")) {
+    let raw = JSON.parse(localStorage.getItem("itemModel"));
+
+    let loaded = raw.map(i => new ItemModel(i.id, i.name, i.price, i.quantity));
+    item_db.length = 0;
+    item_db.push(...loaded);
+}
 
 
-$('#save_item').on("click", function () {
+$(document).ready(function() {
+    $("#item_id").val(nextId());
+    loadTable();
+});
+
+function nextId(){
     let id;
 
-    // Generate new item ID
     if (item_db.length > 0) {
-        const lastItem = item_db[item_db.length - 1].id;
-        id = parseInt(lastItem.slice(1)) + 1;
-        id = "I" + id.toString().padStart(3, '0');
+        const lastId = item_db[item_db.length - 1].id;
+        id = parseInt(lastId.slice(1)) + 1;
+        id = 'I' + id.toString().padStart(3, '0');
     } else {
-        id = "I001";
+        id = 'I001';
     }
+
+    return id;
+}
+
+
+
+
+$('#item_clear').on("click", function () {
+
+    $('#item-tbody tr').css('background-color', '').removeClass('highlight');
+});
+
+$('#save_item').on("click", function () {
+    let id =   nextId();
+
+
+
+    // Generate new item ID
+    // if (item_db.length > 0) {
+    //     const lastItem = item_db[item_db.length - 1].id;
+    //     id = parseInt(lastItem.slice(1)) + 1;
+    //     id = "I" + id.toString().padStart(3, '0');
+    // } else {
+    //     id = "I001";
+    // }
 
     // Get input values
     var name = $("#names").val().trim();
@@ -68,9 +106,11 @@ $('#save_item').on("click", function () {
     // Save item
     let itemModel = new ItemModel(id, name, price, quantity);
     item_db.push(itemModel);
+    localStorage.setItem("itemModel", JSON.stringify(item_db));
 
     // Reload table
     loadTable();
+    setItemIds(item_db);
 
     // Show success alert
     Swal.fire({
@@ -80,7 +120,8 @@ $('#save_item').on("click", function () {
         confirmButtonText: 'OK'
     });
 
-    // Optional: Clear fields after saving
+    //  Clear fields after saving
+    $("#item_id").val(nextId());
     $("#names").val('');
     $("#price").val('');
     $("#qty").val('');
@@ -115,6 +156,7 @@ $("#item_delete_button").on("click", function () {
         if (result.isConfirmed) {
             // Remove customer from array
             item_db.splice(item, 1);
+            localStorage.setItem("itemModel", JSON.stringify(item_db));
             loadTable();
 
             Swal.fire({
@@ -124,13 +166,14 @@ $("#item_delete_button").on("click", function () {
             });
 
             // Optional: clear fields
-            $("#item_id").val('');
+            $("#item_id").val(nextId());
             $("#names").val('');
             $("#price").val('');
             $("#qty").val('');
         }
     });
 });
+
 
 $("#item-tbody").on('click', 'tr', function(){
 
@@ -226,6 +269,7 @@ $('#item_update_button').on("click", function () {
         item.name = name;
         item.price = price;
         item.quantity = quantity;
+        localStorage.setItem("itemModel", JSON.stringify(item_db));
         loadTable();
 
         Swal.fire({
@@ -269,3 +313,32 @@ function loadTable(){
         $('#item-tbody').append(data);
     })
 }
+
+
+$("#item_search_btn").on("click", function () {
+
+    let id = $("#item_search_field").val().trim();
+
+    if (id) {
+        let found = false;
+
+        $('#item-tbody tr').each(function () {
+            let rowId = $(this).find('td:first').text().trim();
+
+            if (rowId === id) {
+                $(this).addClass('highlight');
+
+                $('.item_table').animate({
+                    scrollTop: $(this).position().top + $('.item_table').scrollTop()
+                }, 300);
+                found = true;
+            }
+        });
+
+        if (!found) {
+            alert("Item not found!");
+        }
+    } else {
+        alert("Please enter a Item ID.");
+    }
+});
