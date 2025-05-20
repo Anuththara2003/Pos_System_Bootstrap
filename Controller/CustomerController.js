@@ -12,7 +12,7 @@ if (localStorage.getItem("customer_data")) {
 
 $(document).ready(function() {
     $("#id").val(nextId());
-    loadTable();
+    loadCustomerTable();
 });
 
 
@@ -116,7 +116,7 @@ $('#save-customer').on("click", function () {
     localStorage.setItem("customer_data", JSON.stringify(customer_db));
 
     // Reload table
-    loadTable();
+    loadCustomerTable();
 
     setCustomerIds(customer_db);
 
@@ -209,7 +209,7 @@ $('#customer_update_btn').on("click", function () {
         customer.address = address;
         customer.contact = contact;
         localStorage.setItem("customer_data", JSON.stringify(customer_db));
-        loadTable();
+        loadCustomerTable();
 
         Swal.fire({
             title: "Are you sure?",
@@ -260,7 +260,7 @@ $("#customer_delete_btn").on("click", function () {
             // Remove customer from array
             customer_db.splice(customerIndex, 1);
             localStorage.setItem("customer_data", JSON.stringify(customer_db));
-            loadTable();
+            loadCustomerTable();
 
             Swal.fire({
                 title: "Deleted!",
@@ -298,7 +298,7 @@ $("#customer-tbody").on('click', 'tr', function(){
 });
 
 
-function  loadTable(){
+function  loadCustomerTable(){
     $('#customer-tbody').empty();
     customer_db.map((item, index) => {
         let id = item.customer_id;

@@ -1,7 +1,8 @@
 import {order_db, customer_db, item_db, order_details_db} from "../DB/Db.js";
 import CustomerModel from "../Model/CustomerModel.js";
 import OrderModel from "../Model/OrderModel.js";
- import Order_Details_Model from "../Model/Order_Details_Model.js";
+import Order_Details_Model from "../Model/Order_Details_Model.js";
+import {loadTable} from "./ItemController.js";
 
 
 if (localStorage.getItem("Order_details")) {
@@ -18,7 +19,7 @@ $(document).ready(function() {
     $("#OrderId").val(nextId());
     setCustomerIds();
     setItemIds();
-    loadTable();
+    loadOrderHistory();
 });
 
 function nextId(){
@@ -111,17 +112,91 @@ $('#save-Order').on("click", function () {
     let itemId = $('#inputItemId').val();
     console.log(itemId);
     let itemName = $('#inputItemName').val();
-    let qty = $('#inputItemQty').val();
+    let qty = $('#orderQty').val();
     let price = $('#inputItemPrice').val();
+
+    let qtyAmount = parseInt(qty);
+
+
+    let itemIndex = item_db.findIndex(item => item.id === itemId);
+
+    console.log(`order quantity ${qtyAmount}`);
+    console.log(`item index ${itemIndex}`);
+    console.log(`array quantity ${item_db[itemIndex].quantity}`);
+
+    if (itemIndex !== -1 && item_db[itemIndex].quantity >= qtyAmount) {
+        item_db[itemIndex].quantity -= qtyAmount;
+        console.log(`new array quantity ${item_db[itemIndex].quantity}`);
+    } else {
+        alert("Insufficient stock or item not found!");
+        return;
+    }
+
 
     let order_data = new OrderModel(itemId, itemName, price, qty);
     order_db.push(order_data)
     loadOrder();
-    loadTable();
+    loadOrderHistory();
     reset();
-
+    updateTotals();
 
 });
+
+function updateTotals() {
+    let total = 0;
+
+
+    $('#Add_Item_T_Body tr').each(function () {
+        const rowTotal = parseFloat($(this).find('td:nth-child(5)').text()) || 0;
+        total += rowTotal;
+    });
+
+
+    $('#subTotalPriceDiv').text(total.toFixed(2));
+}
+
+
+function applyDiscount() {
+    const discountInput = $('#discount').val().trim();
+    let discountAmount = 0;
+
+    discountAmount = parseFloat(discountInput) || 0;
+
+    let subTotal = parseFloat($('#subTotalPriceDiv').text() || 0);
+
+    let total = subTotal - discountAmount;
+
+    $('#totalPriceDiv').text(total.toFixed(2));
+}
+
+$('#discount').on('input', function () {
+    applyDiscount();
+});
+
+
+function balanceCalculate() {
+    const cashInput = $('#cash').val().trim();
+    const totalInput = $('#totalPriceDiv').text().trim() || 0;
+
+    let cashAmount = 0;
+    let total = parseFloat(totalInput) || 0;
+
+    cashAmount = parseFloat(cashInput) || 0;
+
+    let balance = cashAmount - total;
+
+    $('#balance').val(balance.toFixed(2));
+
+}
+
+$('#cash').on('input', function () {
+    balanceCalculate();
+});
+
+
+
+
+
 
 function reset(){
     $('#inputCustomerId').val('');
@@ -171,10 +246,12 @@ $('#place_order').on("click", function () {
     localStorage.setItem("Order_details", JSON.stringify(order_details_db));
     console.log(order_details_db);
 
+    loadTable();
+
     });
 
 
-function  loadTable(){
+function  loadOrderHistory(){
     $('#order-history-body').empty();
     order_details_db.map((item, index) => {
         let OrderId = item.oId;

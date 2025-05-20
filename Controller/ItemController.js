@@ -38,19 +38,14 @@ $('#item_clear').on("click", function () {
     $('#item-tbody tr').css('background-color', '').removeClass('highlight');
 });
 
+
+
+
+
+
 $('#save_item').on("click", function () {
     let id =   nextId();
 
-
-
-    // Generate new item ID
-    // if (item_db.length > 0) {
-    //     const lastItem = item_db[item_db.length - 1].id;
-    //     id = parseInt(lastItem.slice(1)) + 1;
-    //     id = "I" + id.toString().padStart(3, '0');
-    // } else {
-    //     id = "I001";
-    // }
 
     // Get input values
     var name = $("#names").val().trim();
@@ -342,3 +337,5 @@ $("#item_search_btn").on("click", function () {
         alert("Please enter a Item ID.");
     }
 });
+
+export {loadTable}
