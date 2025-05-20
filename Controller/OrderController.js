@@ -14,15 +14,14 @@ if (localStorage.getItem("Order_details")) {
 }
 
 
-
-$(document).ready(function() {
+$(document).ready(function () {
     $("#OrderId").val(nextId());
     setCustomerIds();
     setItemIds();
     loadOrderHistory();
 });
 
-function nextId(){
+function nextId() {
     let id;
 
     if (order_db.length > 0) {
@@ -37,10 +36,7 @@ function nextId(){
 }
 
 
-
-
-
-export function setCustomerIds(){
+export function setCustomerIds() {
     const customerIds = customer_db.map(customer => customer.customer_id);
     const dropdown = document.getElementById("dropdownList");
     const input = document.getElementById("inputCustomerId");
@@ -56,17 +52,17 @@ export function setCustomerIds(){
         a.addEventListener("click", function (e) {
             e.preventDefault();
             input.value = this.textContent;
-            $('#inputCustomerName').val(getCustomerByUd(this.textContent).name );
-            $('#inputCustomerAddress').val(getCustomerByUd(this.textContent).address );
+            $('#inputCustomerName').val(getCustomerByUd(this.textContent).name);
+            $('#inputCustomerAddress').val(getCustomerByUd(this.textContent).address);
         });
 
         li.appendChild(a);
         dropdown.appendChild(li);
-    });}
+    });
+}
 
 
-
-export function setItemIds(){
+export function setItemIds() {
     const itemIds = item_db.map(item => item.id);
     const dropdown = document.getElementById("Item_dropdownList");
     const input = document.getElementById("inputItemId");
@@ -83,14 +79,15 @@ export function setItemIds(){
             e.preventDefault();
             input.value = this.textContent;
             $('#inputItemName').val(getItemByUd(this.textContent).name);
-            $('#inputItemPrice').val(getItemByUd(this.textContent).price );
-            $('#inputItemQty').val(getItemByUd(this.textContent).quantity );
+            $('#inputItemPrice').val(getItemByUd(this.textContent).price);
+            $('#inputItemQty').val(getItemByUd(this.textContent).quantity);
 
         });
 
         li.appendChild(a);
         dropdown.appendChild(li);
-    });}
+    });
+}
 
 
 function getCustomerByUd(id) {
@@ -102,8 +99,6 @@ function getCustomerByUd(id) {
 function getItemByUd(id) {
     return item_db.find(item => item.id === id);
 }
-
-
 
 
 $('#save-Order').on("click", function () {
@@ -194,14 +189,10 @@ $('#cash').on('input', function () {
 });
 
 
-
-
-
-
-function reset(){
-    $('#inputCustomerId').val('');
-    $('#date').val('');
-    $('#inputCustomerName').val('');
+function reset() {
+    // $('#inputCustomerId').val('');
+    // $('#date').val('');
+    // $('#inputCustomerName').val('');
 
     $('#inputItemId').val('');
     $('#inputItemName').val('');
@@ -210,8 +201,7 @@ function reset(){
 }
 
 
-
-function  loadOrder(){
+function loadOrder() {
     $('#Add_Item_T_Body').empty();
     order_db.map((item, index) => {
         let id = item.id;
@@ -219,12 +209,12 @@ function  loadOrder(){
         let price = item.price;
         let qty = item.qty;
 
-        let  data  =`<tr>
+        let data = `<tr>
             <td>${id}</td>
             <td>${name}</td>
             <td>${price}</td>
             <td>${qty}</td>
-            <td>${price*qty}</td>
+            <td>${price * qty}</td>
         </tr>`
         $('#Add_Item_T_Body').append(data);
 
@@ -234,24 +224,39 @@ function  loadOrder(){
 }
 
 $('#place_order').on("click", function () {
-        let orderId = $('#OrderId').val();
-        let cusId = $('#inputCustomerId').val();
-        let date = $('#date').val();
-        let cusName = $('#inputCustomerName').val();
-        let address = $('#inputCustomerAddress').val();
+    let orderId = $('#OrderId').val();
+    let cusId = $('#inputCustomerId').val();
+    let date = $('#date').val();
+    let cusName = $('#inputCustomerName').val();
+    let address = $('#inputCustomerAddress').val();
 
-        let Order_details = new Order_Details_Model(orderId, cusId, [...order_db],date);
+    console.log(`cust id ${cusId}`);
+    console.log(`date ${date}`);
+
+    let Order_details = new Order_Details_Model(orderId, cusId, [...order_db], date);
+
+    console.log(Order_details)
 
     order_details_db.push(Order_details);
     localStorage.setItem("Order_details", JSON.stringify(order_details_db));
     console.log(order_details_db);
 
-    loadTable();
+    $('#Add_Item_T_Body').empty();
 
+    Swal.fire({
+        title: 'Success!',
+        text: 'Order saved successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
     });
 
+    loadOrderHistory();
+    loadTable();
 
-function  loadOrderHistory(){
+});
+
+
+function loadOrderHistory() {
     $('#order-history-body').empty();
     order_details_db.map((item, index) => {
         let OrderId = item.oId;
@@ -265,7 +270,7 @@ function  loadOrderHistory(){
             totalPrice += price;
         });
 
-        let  data  =`<tr>
+        let data = `<tr>
             <td>${OrderId}</td>
             <td>${Date}</td>
             <td>${CustomerId}</td>
@@ -280,12 +285,16 @@ function  loadOrderHistory(){
 
 }
 
-$("#order-history-body").on('click', 'tr', function(){
+$("#order-history-body").on('click', 'tr', function () {
     let index = $(this).index();
     let data = order_details_db[index];
     console.log(data);
 
+    // order_details_db.splice(index, 1);
+    // localStorage.setItem("Order_details", JSON.stringify(order_details_db));
 
+
+    $('#order-item-body').empty();
 
     data.order_data.map((item, index) => {
         let id = item.id;
@@ -293,14 +302,16 @@ $("#order-history-body").on('click', 'tr', function(){
         let quantity = item.qty;
         let price = item.price;
 
-        let  data  =`<tr>
+        let data = `<tr>
             <td>${id}</td>
             <td>${name}</td>
             <td>${quantity}</td>
             <td>${price}</td>
-           
+
         </tr>`
         console.log(data);
         $('#order-item-body').append(data);
     });
+
+
 });
